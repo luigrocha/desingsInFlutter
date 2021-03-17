@@ -1,3 +1,4 @@
+import 'package:desinginflutter/src/page/basico_page.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -8,6 +9,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Diseños',
+      initialRoute: 'basico',
+      routes: {
+        'basico': (BuildContext context) => BasicoPage(),
+      },
     );
   }
 }

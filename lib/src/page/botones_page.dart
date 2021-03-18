@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class BotonesPage extends StatelessWidget {
@@ -9,6 +8,11 @@ class BotonesPage extends StatelessWidget {
       body: Stack(
         children: [
           _fondoApp(),
+          SingleChildScrollView(
+            child: Column(children: [
+              _titulos(),
+            ]),
+          ),
         ],
       ),
     );
@@ -51,6 +55,33 @@ class BotonesPage extends StatelessWidget {
           child: cajaRosada,
         ),
       ],
+    );
+  }
+
+  Widget _titulos() {
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.all(20.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Classify Transaction',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10.0,
+            ),
+            Text(
+              'Classify this transaction into a particula category',
+              style: TextStyle(color: Colors.white, fontSize: 18.0),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -7,42 +7,57 @@ class BasicoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          _crearImagen(),
-          _crearTitulo(),
-          _crearAcciones(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            _crearImagen(),
+            _crearTitulo(),
+            _crearAcciones(),
+            _crearTexto(),
+            _crearTexto(),
+            _crearTexto(),
+            _crearTexto(),
+            _crearTexto(),
+          ],
+        ),
       ),
     );
   }
 
   Widget _crearImagen() {
-    return Image(
+    return Container(
+      width: double.infinity,
+      child: Image(
+        height: 300.0,
+        fit: BoxFit.cover,
         image: NetworkImage(
-            'https://www.mickeyshannon.com/photos/landscape-photography.jpg'));
+            'https://www.mickeyshannon.com/photos/landscape-photography.jpg'),
+      ),
+    );
   }
 
   Widget _crearTitulo() {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Lago con un puente', style: estiloTitulo),
-                SizedBox(
-                  height: 7.0,
-                ),
-                Text('Un Lago que se ', style: estiloSubTitulo),
-              ],
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 20.0),
+        child: Row(
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text('Lago con un puente', style: estiloTitulo),
+                  SizedBox(
+                    height: 7.0,
+                  ),
+                  Text('Un Lago que se ', style: estiloSubTitulo),
+                ],
+              ),
             ),
-          ),
-          Icon(Icons.star, color: Colors.red, size: 30.0),
-          Text('41', style: TextStyle(fontSize: 20.0))
-        ],
+            Icon(Icons.star, color: Colors.red, size: 30.0),
+            Text('41', style: TextStyle(fontSize: 20.0))
+          ],
+        ),
       ),
     );
   }
@@ -68,7 +83,15 @@ class BasicoPage extends StatelessWidget {
     );
   }
 
-  Widget _crearTexto(){
-    return Text(data)
+  Widget _crearTexto() {
+    return SafeArea(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 40.0, vertical: 20.0),
+        child: Text(
+          'Id Lorem veniam mollit ea ipsum qui qui elit sunt deserunt enim ad. Velit cupidatat est culpa dolor dolor nulla elit amet enim officia sint Lorem proident. Nulla esse occaecat pariatur minim dolor aliquip voluptate cupidatat enim quis officia cillum. Et id culpa ex adipisicing nisi adipisicing culpa voluptate amet officia commodo. Fugiat mollit consequat ipsum laborum culpa Lorem occaecat nostrud. Excepteur Lorem cillum enim enim esse laborum sit qui fugiat est tempor.',
+          textAlign: TextAlign.justify,
+        ),
+      ),
+    );
   }
 }

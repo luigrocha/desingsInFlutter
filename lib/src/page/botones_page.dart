@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class BotonesPage extends StatelessWidget {
@@ -11,6 +12,7 @@ class BotonesPage extends StatelessWidget {
           SingleChildScrollView(
             child: Column(children: [
               _titulos(),
+              _botonesRedondeados(),
             ]),
           ),
         ],
@@ -97,7 +99,7 @@ class BotonesPage extends StatelessWidget {
           )
         )
       ),
-       child: BottomNavigationBar(
+        child: BottomNavigationBar(
         items: 
           <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.calendar_today, size: 30.0,),
@@ -110,6 +112,71 @@ class BotonesPage extends StatelessWidget {
         ,
       ),);
   }
+
+  Widget _botonesRedondeados() {
+    return Table(
+      children: [
+        TableRow(
+          children:[
+            _crearBotonRedondeado(Colors.blue, Icons.border_all, 'General'),
+            _crearBotonRedondeado(Colors.purple, Icons.directions, 'Dirección'),
+          ]
+        ),
+        TableRow(
+          children:[
+            _crearBotonRedondeado(Colors.pinkAccent, Icons.shop, 'Tienda'),
+            _crearBotonRedondeado(Colors.orange, Icons.insert_chart_outlined, 'Insertar'),
+          ]
+        ),
+         TableRow(
+          children:[
+            _crearBotonRedondeado(Colors.blueAccent, Icons.movie_filter, 'Peliculas'),
+            _crearBotonRedondeado(Colors.green, Icons.cloud, 'Drive'),
+          ]
+        ),
+        TableRow(
+          children:[
+            _crearBotonRedondeado(Colors.grey, Icons.read_more, 'Lectura'),
+            _crearBotonRedondeado(Colors.red, Icons.send_rounded, 'Enviar'),
+          ]
+        ),
+      ],
+    );
+
+  }
+Widget _crearBotonRedondeado(Color color, IconData icon, String texto){
+  return ClipRect(
+      child: BackdropFilter(
+      filter: ImageFilter.blur(
+        sigmaX:10.0,
+        sigmaY: 10.0,
+      ),
+        child: Container(
+
+        height: 180.0,
+        margin: EdgeInsets.all(15.0),
+        decoration: BoxDecoration(
+          color: Color.fromRGBO(62, 66, 107, 0.7),
+          borderRadius: BorderRadius.circular(20.0)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(height: 5.0,),
+            CircleAvatar(
+              backgroundColor: color,
+              radius: 35.0,
+              child: Icon(icon, color: Colors.white, size:30.0),
+            ),
+            Text(texto, style: TextStyle( color: color),),
+            SizedBox(height: 5.0,)
+          ],
+        ),
+      ),
+    ),
+  ) ;
+
+}
+
 }
 
 
